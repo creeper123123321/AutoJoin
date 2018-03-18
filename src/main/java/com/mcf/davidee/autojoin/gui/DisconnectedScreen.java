@@ -52,7 +52,7 @@ public class DisconnectedScreen extends GuiScreen {
 		this.buttonList.add(new GuiButton(1, width /2 - 100, height/ 4 + 80, "Auto Join"));
 		this.buttonList.add(new GuiButton(2, width / 2 - 100, height / 4 + 106, "Auto Join Properties"));
 
-		this.list = this.fontRendererObj.listFormattedStringToWidth(errorDetail.getFormattedText(), this.width - 50);
+		this.list = this.fontRenderer.listFormattedStringToWidth(errorDetail.getFormattedText(), this.width - 50);
 	}
 
 	protected void actionPerformed(GuiButton button) {
@@ -69,13 +69,13 @@ public class DisconnectedScreen extends GuiScreen {
 	@SuppressWarnings("rawtypes")
 	public void drawScreen(int par1, int par2, float par3) {
 		this.drawDefaultBackground();
-		this.drawCenteredString(this.fontRendererObj, this.errorMessage, this.width / 2, this.height / 2 - 50, 11184810);
+		this.drawCenteredString(this.fontRenderer, this.errorMessage, this.width / 2, this.height / 2 - 50, 11184810);
 		int k = this.height / 2 - 30;
 
 		if (list != null) {
-			for (Iterator iterator = list.iterator(); iterator.hasNext(); k += this.fontRendererObj.FONT_HEIGHT) {
+			for (Iterator iterator = list.iterator(); iterator.hasNext(); k += this.fontRenderer.FONT_HEIGHT) {
 				String s = (String)iterator.next();
-				this.drawCenteredString(this.fontRendererObj, s, this.width / 2, k, 16777215);
+				this.drawCenteredString(this.fontRenderer, s, this.width / 2, k, 16777215);
 			}
 		}
 

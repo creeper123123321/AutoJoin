@@ -1,4 +1,3 @@
 [submodule "GuiLib"]
 	path = GuiLib
-	url = https://github.com/joserobjr/GuiLib.git
-	branch = 1.11
+	url = https://github.com/creeper123123321/GuiLib.git

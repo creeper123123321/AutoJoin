@@ -2,11 +2,6 @@ package com.mcf.davidee.autojoin.gui;
 
 import java.util.Arrays;
 
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.util.math.MathHelper;
-
-import com.mcf.davidee.autojoin.AutoJoin;
-import com.mcf.davidee.autojoin.ServerSetting;
 import com.mcf.davidee.guilib.basic.BasicScreen;
 import com.mcf.davidee.guilib.basic.Label;
 import com.mcf.davidee.guilib.basic.MultiTooltip;
@@ -16,7 +11,13 @@ import com.mcf.davidee.guilib.core.Container;
 import com.mcf.davidee.guilib.core.TextField;
 import com.mcf.davidee.guilib.vanilla.ButtonVanilla;
 import com.mcf.davidee.guilib.vanilla.TextFieldVanilla;
-import com.mcf.davidee.guilib.vanilla.TextFieldVanilla.VanillaFilter;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.util.math.MathHelper;
+
+import com.mcf.davidee.autojoin.AutoJoin;
+import com.mcf.davidee.autojoin.ServerSetting;
+
+import javax.annotation.Nonnull;
 
 public class PropertiesScreen extends BasicScreen {
 	
@@ -28,7 +29,7 @@ public class PropertiesScreen extends BasicScreen {
 	private TextField pingDelay, errorDelay, joinOffset;
 	private Button close;
 
-	public PropertiesScreen(GuiScreen parent, String ip) {
+	public PropertiesScreen(@Nonnull GuiScreen parent, @Nonnull String ip) {
 		super(parent);
 		
 		this.ip = "" + ip;
@@ -72,13 +73,13 @@ public class PropertiesScreen extends BasicScreen {
 		join = new Label("Join Offset", new MultiTooltip(Arrays.asList("Connect when", "#Players < #MaxPlayers + JoinOffset")));
 		close = new ButtonVanilla("Done", new CloseHandler());
 		
-		pingDelay = new TextFieldVanilla(100, 20, new VanillaFilter());
+		pingDelay = new TextFieldVanilla(100, 20, new TextFieldVanilla.VanillaFilter());
 		pingDelay.setMaxLength(4);
 		pingDelay.setText("" + setting.pingDelay);
-		errorDelay = new TextFieldVanilla(100, 20, new VanillaFilter());
+		errorDelay = new TextFieldVanilla(100, 20, new TextFieldVanilla.VanillaFilter());
 		errorDelay.setMaxLength(4);
 		errorDelay.setText("" + setting.errorDelay);
-		joinOffset = new TextFieldVanilla(100, 20, new VanillaFilter());
+		joinOffset = new TextFieldVanilla(100, 20, new TextFieldVanilla.VanillaFilter());
 		joinOffset.setMaxLength(4);
 		joinOffset.setText("" + setting.joinOffset);
 		

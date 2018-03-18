@@ -1,5 +1,10 @@
 package com.mcf.davidee.autojoin.gui;
 
+import com.mcf.davidee.guilib.basic.BasicScreen;
+import com.mcf.davidee.guilib.basic.Label;
+import com.mcf.davidee.guilib.core.Button;
+import com.mcf.davidee.guilib.core.Container;
+import com.mcf.davidee.guilib.vanilla.ButtonVanilla;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.network.NetworkManager;
@@ -10,11 +15,6 @@ import com.mcf.davidee.autojoin.ServerInfo;
 import com.mcf.davidee.autojoin.ServerSetting;
 import com.mcf.davidee.autojoin.thread.ThreadConnectToServer;
 import com.mcf.davidee.autojoin.thread.ThreadPingServer;
-import com.mcf.davidee.guilib.basic.BasicScreen;
-import com.mcf.davidee.guilib.basic.Label;
-import com.mcf.davidee.guilib.core.Button;
-import com.mcf.davidee.guilib.core.Container;
-import com.mcf.davidee.guilib.vanilla.ButtonVanilla;
 
 public class AutoJoinScreen extends BasicScreen {
 

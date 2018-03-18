@@ -8,6 +8,7 @@ import net.minecraft.client.gui.GuiDisconnected;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.multiplayer.GuiConnecting;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
 import com.mcf.davidee.autojoin.gui.DisconnectedScreen;
@@ -23,19 +24,19 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent.ClientConnectedToServerEvent;
 
 
-@Mod(modid="AutoJoin", name="Auto Join", version=AutoJoin.VERSION, dependencies="after:guilib")
+@Mod(modid="autojoin", name="Auto Join", version=AutoJoin.VERSION, dependencies="after:guilib")
 public class AutoJoin {
 	
-	public static final int PROTOCOL_VER = 315;
+	public static final int PROTOCOL_VER = 340;
 	public static final String VERSION = "1.11.0.0";
 	
-	@Instance("AutoJoin")
+	@Instance("autojoin")
 	public static AutoJoin instance;
 	
 	private AJConfig config;
 	public ServerInfo lastServer;
 	
-	private GuiScreen guiCache = null;
+	private GuiScreen guiCache;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -51,14 +52,14 @@ public class AutoJoin {
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		FMLCommonHandler.instance().bus().register(this);
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
 	@SubscribeEvent
 	public void clientTick(ClientTickEvent event) {
 		Minecraft mc = Minecraft.getMinecraft();
 		
-		if (mc.currentScreen != guiCache) {
+		if (mc.currentScreen != null && !mc.currentScreen.equals(guiCache)) {
 			guiCache = mc.currentScreen;
 			
 			if (guiCache instanceof GuiDisconnected && lastServer != null) 

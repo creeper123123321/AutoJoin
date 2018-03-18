@@ -73,7 +73,7 @@ public class ThreadPingServer extends Thread {
 		});
 
 		try {
-			manager.sendPacket(new C00Handshake(AutoJoin.PROTOCOL_VER, info.ip, info.port, EnumConnectionState.STATUS));
+			manager.sendPacket(new C00Handshake(info.ip, info.port, EnumConnectionState.STATUS));
 			manager.sendPacket(new CPacketServerQuery());
 			screen.setManager(manager);
 		}
